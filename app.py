@@ -45,11 +45,11 @@ with st.spinner('Loading the latest data ...'):
 list_of_fighter_urls = list(all_fighter_details_df['URL'])
 list_of_fighter_names = list(all_fighter_details_df['Name'])
 
-col1, col2= st.columns([1,2])
+# col1, col2= st.columns([1,2])
 
-with col1:
+# with col1:
 # Select fighter(s)
-    selected_fighters = st.multiselect('Select fighter(s)', list_of_fighter_names)
+selected_fighters = st.multiselect('Select fighter(s)', list_of_fighter_names)
 
 with st.sidebar:
     st.write("_Data from http://ufcstats.com/statistics/fighters_")
@@ -81,11 +81,11 @@ for fighter_name in selected_fighters:
 if fighter_data :
     df_selected_fighter = pd.concat(fighter_data).reset_index()
      # show weight category and stance
-    with col2:
-        st.write("")
-        st.write("")
-        st.write(df_selected_fighter[["FIGHTER", "WEIGHT", "HEIGHT", "REACH", "STANCE"]])
-    
+    # with col2:
+    # st.write("")
+    # st.write("")
+    st.write(df_selected_fighter[["FIGHTER", "WEIGHT", "HEIGHT", "REACH", "STANCE"]])
+
     # preprocessing 
     df_selected_fighter = df_selected_fighter.replace("--", "").reset_index(drop=True)
     df_selected_fighter['HEIGHT'] = df_selected_fighter['HEIGHT'].apply(pp.convert_to_meters)
