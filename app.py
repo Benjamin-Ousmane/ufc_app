@@ -39,8 +39,8 @@ def get_all_fighter_detail():
     all_fighter_details_df["Name"] = all_fighter_details_df.apply(lambda x: f"{x['FIRST']} {x['LAST']}", axis=1)
     return all_fighter_details_df
 
-
-all_fighter_details_df = get_all_fighter_detail()
+with st.spinner('Loading the latest data ...'):
+    all_fighter_details_df = get_all_fighter_detail()
 # define list of urls of fighters to parse
 list_of_fighter_urls = list(all_fighter_details_df['URL'])
 list_of_fighter_names = list(all_fighter_details_df['Name'])
@@ -60,10 +60,10 @@ with st.sidebar:
     st.write("**REACH** - Meters")
     st.write("**SApM** - Significant Strikes Absorbed per Minute")
     st.write("**SLpM** - Significant Strikes Landed per Minute")
-    st.write("**Str. Acc.** - Significant Striking Accuracy")
+    st.write("**Str. Acc.** - Significant Striking Accuracy (%)")
     st.write("**Str. Def.** - Significant Strike Defence (the % of opponents strikes that did not land)")
     st.write("**Sub. Avg.** - Average Submissions Attempted per 15 minutes")
-    st.write("**TD Acc.** - Takedown Accuracy")
+    st.write("**TD Acc.** - Takedown Accuracy (%)")
     st.write("**TD Avg.** - Average Takedowns Landed per 15 minutes")
     st.write("**TD Def.** - Takedown Defense (the % of opponents TD attempts that did not land)")
 
