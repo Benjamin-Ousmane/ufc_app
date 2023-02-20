@@ -95,7 +95,8 @@ if fighter_data :
     df_selected_fighter['TD Acc.'] = df_selected_fighter['TD Acc.'].apply(pp.percentage_to_float)
     df_selected_fighter['TD Def.'] = df_selected_fighter['TD Def.'].apply(pp.percentage_to_float)
     
-   
+   # Convertir toutes les colonnes en nombres
+    df_selected_fighter = df_selected_fighter.applymap(lambda x: pd.to_numeric(x, errors='ignore'))
     
     # mettre en forme la dataframe en un format de données longues
     df_melted = pd.melt(
